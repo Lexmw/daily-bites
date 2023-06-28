@@ -1,0 +1,31 @@
+{
+  "name": "daily-bites",
+  "version": "1.0.0",
+  "description": "A simple recipe application where you can search for recipes, and have then sent straight to you.",
+  "default": "public/indx.html",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "start-server": "node sever/index.js",
+    "build": "parcel build src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chakra-ui/react": "^2.7.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "framer-motion": "^10.12.17",
+    "node": "^20.3.1",
+    "parcel": "^2.9.3",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
