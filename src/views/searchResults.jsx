@@ -67,6 +67,7 @@ export default function SearchResults() {
 
   return (
     <>
+    <Container id="search-results" pt="50px"maxW="100%">
       <Flex direction="row" align="flex-start" m="20">
         <Container
           w="20%"
@@ -100,6 +101,7 @@ export default function SearchResults() {
           ))}
         </Container>
       </Flex>
+    </Container>
     </>
   );
 }
