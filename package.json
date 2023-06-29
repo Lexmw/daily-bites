@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel public/index.html",
     "start-server": "node sever/index.js",
-    "build": "parcel build src/index.js",
+    "build": "parcel build public/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
