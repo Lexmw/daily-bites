@@ -23,7 +23,9 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.0"
+    "react-router-dom": "^6.14.0",
+    "react-router-hash-link": "^2.4.3",
+    "react-scrollchor": "^7.0.2"
   },
   "devDependencies": {
     "process": "^0.11.10"
