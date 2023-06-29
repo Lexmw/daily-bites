@@ -28,7 +28,7 @@ export default function Hero() {
           <Text textAlign="left" fontSize="18" mt="5px">
             Find a meal to cook tonight
           </Text>
-          <Link smooth to="/#search-results">
+          <Link smooth to="/#search-recipes">
             <Button
               colorScheme="red"
               variant="solid"

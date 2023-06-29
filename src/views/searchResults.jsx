@@ -10,50 +10,52 @@ import {
 } from "@chakra-ui/react";
 import Card from "../components/Card";
 import CategoryCheckboxes from "../components/CategoryCheckboxes";
-import data from "../../data";
+import Paginate from "../components/Paginate";
 
-export default function SearchResults() {
+export default function SearchRecipes() {
   //Maintain state for the checkboxes?
   //Maintain the state for the cards listed - Category checkboxes update the state of the cards
   // for the card I only need the name, image, area, category should I update the
-  const [results, setResults] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage] = useState(5);
+
+  const indexOfLastrecipe = currentPage * recipesPerPage;
+  const indexOfFirstrecipe = indexOfLastrecipe - recipesPerPage;
+  const currentRecipes = recipes.slice(indexOfFirstrecipe, indexOfLastrecipe);
 
   useEffect(() => {
-    //inital page load fetch of data
+    //inital page load of recipe data
     const dataFetch = async () => {
       const data = await (
         await fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a")
       ).json();
 
-      setResults(data?.meals);
+      setRecipes(data?.meals);
       setIsLoaded(true);
     };
 
     dataFetch();
   }, []);
 
-  const newCategorySearchResults = (array1, array2) => {
-    console.log(array1);
-    console.log(array2)
+  const categorySearchRecipes = (array1, array2) => {
     var differentValues = [];
 
     for (var i = 0; i < array1.length; i++) {
-      if (!array2.some(x => x.idMeal === array1[i].idMeal)) {
+      if (!array2.some((x) => x.idMeal === array1[i].idMeal)) {
         differentValues.push(array1[i]);
       }
     }
 
     for (var j = 0; j < array2.length; j++) {
-      if (!array1.some(v => v.idMeal === array2[j].idMeal)) {
+      if (!array1.some((v) => v.idMeal === array2[j].idMeal)) {
         differentValues.push(array2[j]);
       }
     }
 
-    console.log(differentValues);
     return differentValues;
   };
-
 
   const searchCategoryRecipes = async (e) => {
     setIsLoaded(false);
@@ -63,15 +65,30 @@ export default function SearchResults() {
       )
     ).json();
 
-    setResults((curr) => newCategorySearchResults(data.meals, curr));
-
+    setRecipes((curr) => categorySearchRecipes(data.meals, curr));
     setIsLoaded(true);
+  };
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const previousPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage !== Math.ceil(recipes.length / recipesPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   return (
     <>
-      <Container id="search-results" pt="50px" maxW="100%">
-        <Flex direction="row" align="flex-start" m="20">
+      <Container id="search-recipes" maxW="100%">
+        <Flex direction="row" align="flex-start" m="10">
           <Container
             w="20%"
             p="10"
@@ -90,7 +107,7 @@ export default function SearchResults() {
             borderColor="gray.200"
             rounded="md"
           >
-            {results.map((recipe, index) => (
+            {currentRecipes.map((recipe, index) => (
               <Skeleton key={recipe.idMeal} height="100%" isLoaded={isLoaded}>
                 <Card
                   dishName={recipe.strMeal}
@@ -102,6 +119,13 @@ export default function SearchResults() {
                 />
               </Skeleton>
             ))}
+            <Paginate
+              recipesPerPage={recipesPerPage}
+              totalRecipes={recipes.length}
+              paginate={paginate}
+              previousPage={previousPage}
+              nextPage={nextPage}
+            />
           </Container>
         </Flex>
       </Container>
