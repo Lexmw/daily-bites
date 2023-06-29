@@ -15,7 +15,7 @@ import { HashLink as Link } from "react-router-hash-link";
 export default function Hero() {
   return (
     <Container bg="black" h="100vh" minh="200px" color="white" maxW="100%">
-      <HStack w="100%" px="5" py="2" justifyContent="center" flexWrap="wrap">
+      <HStack w="100%" px="5" py="12" justifyContent="center" flexWrap="wrap">
         <VStack
           w="30%"
           alignItems="flex-start"
@@ -45,7 +45,7 @@ export default function Hero() {
           overflow="hidden"
           maxW={{ base: "300px", sm: "200px", md: "80%" }}
           maxH={{ base: "300px", sm: "100px", md: "500px", lg: "800px" }}
-          h="800px"
+          h="700px"
           src={heroplate}
           alt="A photo of roasted chicken and red saice on a white plate."
         />
