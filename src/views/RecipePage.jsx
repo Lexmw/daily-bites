@@ -17,8 +17,9 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useState, useMemo } from "react";
-
 import { useParams } from "react-router-dom";
+
+import Header from "../components/Header";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState([]);
@@ -42,6 +43,7 @@ export default function RecipePage() {
 
   return (
     <>
+      <Header />
       {recipe?.map((info, index) => (
         <Container maxW="100%" p="20" key={index}>
           <Container maxW="100%">
@@ -177,7 +179,7 @@ export default function RecipePage() {
           <Divider orientation="horizontal" my="20" />
 
           <Skeleton isLoaded={isLoaded}>
-            <AspectRatio maxW="80%" ratio={4 / 3} my="50" mx="auto">
+            <AspectRatio maxW="70%" ratio={4 / 3} my="50" mx="auto">
               <iframe
                 title="naruto"
                 src={recipe[0].strYoutube.replace("watch?v=", "embed/")}
