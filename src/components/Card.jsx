@@ -12,12 +12,13 @@ export default function Card(props) {
 
   return (
     <Card
-      direction={{ base: "column", sm: "row" }}
+      direction="row"
       overflow="hidden"
       variant="outline"
-      m="5"
-      h="100"
-      maxh="125"
+      mt="5"
+      w="100%"
+      // h="100"
+      // maxh="125"
       boxShadow='md'
     >
       <LinkBox as="article" w='100%' p="2" rounded="md">
@@ -26,6 +27,7 @@ export default function Card(props) {
             <Image
               objectFit="contain"
               maxW={{ base: "100%", sm: "75px" }}
+              h={["60px", "100px", "100%"]}
               src={img}
               alt="Caffe Latte"
               rounded="md"
@@ -33,8 +35,8 @@ export default function Card(props) {
 
             <Stack>
               <CardBody p="1">
-                <Heading size="md"> {dishName} </Heading>
-                {area && category ? <Text>{area} • {category}</Text> : null}
+                <Heading size={["sm","sm","md"]}> {dishName} </Heading>
+                {area && category ? <Text size={["sm","sm","md"]}>{area} • {category}</Text> : null}
               </CardBody>
             </Stack>
           </HStack>

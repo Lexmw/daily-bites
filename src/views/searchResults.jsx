@@ -88,10 +88,11 @@ export default function SearchRecipes() {
   return (
     <>
       <Container id="search-recipes" maxW="100%">
-        <Flex direction="row" align="flex-start" m="10">
+        <Flex direction="row" align="flex-start" m="10" flexWrap="wrap">
           <Container
-            w="20%"
-            p="10"
+            w={["100%", "100%", "20%"]}
+            p={["25px", "10"]}
+            m={["15px", "20px", "0"]}
             align="left"
             minW="180px"
             bg="grey"
@@ -101,14 +102,13 @@ export default function SearchRecipes() {
             <CategoryCheckboxes searchCategoryRecipes={searchCategoryRecipes} />
           </Container>
           <Container
-            w="75%"
-            maxW="100%"
+            w={["100%", "100%", "70%", "75%"]}
             border="1px"
             borderColor="gray.200"
             rounded="md"
           >
             {currentRecipes.map((recipe, index) => (
-              <Skeleton key={recipe.idMeal} height="100%" isLoaded={isLoaded}>
+              <Skeleton key={recipe.idMeal} w="100%" h="100%" isLoaded={isLoaded} mx="0">
                 <Card
                   dishName={recipe.strMeal}
                   img={recipe.strMealThumb}
