@@ -14,14 +14,14 @@ import { HashLink as Link } from "react-router-hash-link";
 
 export default function Hero() {
   return (
-    <Container bg="black" h="100vh" minh="200px" color="white" maxW="100%">
-      <HStack w="100%" px="5" py="12" justifyContent="center" flexWrap="wrap">
+    <Container bg="black" maxH="100%" minh="200px" color="white" maxW="100%">
+      <HStack w="100%" px="5" py={["50", "50", "12"]} justifyContent="center" flexWrap="wrap">
         <VStack
-          w="30%"
-          alignItems="flex-start"
+          w={{ base: "100%", sm: "100%", md: "30%" }}
+          alignItems={["center", "center", "flex-start"]}
           maxW={{ base: "100%", sm: "40%", md: "30%" }}
         >
-          <Heading size="4xl" textAlign="left" lineHeight="1.0499996em">
+          <Heading size="4xl" textAlign={["center", "center", "left"]} lineHeight="1.0499996em">
             The <br />
             Daily Bites
           </Heading>
@@ -43,8 +43,8 @@ export default function Hero() {
         <Image
           objectFit="cover"
           overflow="hidden"
-          maxW={{ base: "300px", sm: "200px", md: "80%" }}
-          maxH={{ base: "300px", sm: "100px", md: "500px", lg: "800px" }}
+          maxW={{ base: "230px", sm: "100px", md: "80%" }}
+          maxH={{ base: "230px", sm: "100px", md: "300px", lg: "800px" }}
           h="700px"
           src={heroplate}
           alt="A photo of roasted chicken and red saice on a white plate."

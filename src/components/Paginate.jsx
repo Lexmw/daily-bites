@@ -25,6 +25,8 @@ const Paginate = ({
         className="pagination"
         listStyleType="none"
         display="flex"
+        flexWrap="wrap"
+
         gap="5px"
         m="10px"
         alignContent="center"

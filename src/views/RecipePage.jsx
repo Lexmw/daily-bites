@@ -45,10 +45,10 @@ export default function RecipePage() {
     <>
       <Header />
       {recipe?.map((info, index) => (
-        <Container maxW="100%" p="20" key={index}>
+        <Container maxW="100%" p={["60px","15","20"]} key={index}>
           <Container maxW="100%">
-            <HStack>
-              <Skeleton w="40%" isLoaded={isLoaded} borderRadius="full">
+            <HStack display="flex" flexWrap="wrap" justifyContent="center">
+              <Skeleton w={["80%", "40%"]} isLoaded={isLoaded} borderRadius="full">
                 <Box >
                   <Image
                     src={info.strMealThumb}
@@ -59,10 +59,10 @@ export default function RecipePage() {
                 </Box>
               </Skeleton>
               <Box>
-                <VStack ml="20" alignItems="flex-start">
+                <VStack ml={["0", "0", "20", "20"]} alignItems={["center", "flex-start"]}>
                   <Skeleton isLoaded={isLoaded}>
-                    <Heading fontSize="50px">{info.strMeal}</Heading>
-                    <Text fontSize="20px" textAlign="left">
+                    <Heading fontSize={["20px","50px"]}>{info.strMeal}</Heading>
+                    <Text fontSize={["15px", "20px"]} textAlign="left">
                       {info.strCategory} &#8226; {info.strArea}
                     </Text>
                   </Skeleton>
@@ -158,7 +158,7 @@ export default function RecipePage() {
             </HStack>
 
             <Box position="relative" padding="10">
-              <Divider my="20" />
+              <Divider my={["5", "20"]} />
               <AbsoluteCenter
                 bg="white"
                 px="4"
@@ -176,12 +176,12 @@ export default function RecipePage() {
             </Text>
           </SkeletonText>
 
-          <Divider orientation="horizontal" my="20" />
+          <Divider orientation="horizontal" my={["5", "20"]} />
 
           <Skeleton isLoaded={isLoaded}>
-            <AspectRatio maxW="70%" ratio={4 / 3} my="50" mx="auto">
+            <AspectRatio maxW={["100%", "70%"]} ratio={4 / 3} my="50" mx="auto">
               <iframe
-                title="naruto"
+                title="Recipe Instructional Video"
                 src={recipe[0].strYoutube.replace("watch?v=", "embed/")}
                 allowFullScreen
               />
